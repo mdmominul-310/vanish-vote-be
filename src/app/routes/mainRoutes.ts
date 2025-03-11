@@ -1,10 +1,22 @@
 import { Router } from "express";
+import { pollsRouter } from "../modules/polls/polls.routes";
+import { commentsRouter } from "../modules/comments/comments.routes";
 
 const router = Router();
-// const moduleRoutes =[]
+const moduleRoutes = [
+  {
+    path: "/polls",
+    route: pollsRouter,
+  },
 
-// moduleRoutes.forEach((route) => {
-//   router.use(route.path, route.route);
-// });
+  {
+    path: "/comments",
+    route: commentsRouter,
+  },
+];
+
+moduleRoutes.forEach((route) => {
+  router.use(route.path, route.route);
+});
 
 export default router;
